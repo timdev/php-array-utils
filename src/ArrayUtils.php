@@ -22,17 +22,21 @@ class ArrayUtils
      */
     public static function val(array $array, $key, $default = null)
     {
-        // if key i
+        // if key isn't an array, turn it into [ $key ]
         $key = (array) $key;
 
         $sub = $array;
+
+        $path = ''; // tracks how far we've dug.
 
         foreach($key as $idx=>$k){
 
             // check that current key is valid.
             if ( ! (is_int($k) || is_string($k))){
-                throw new \InvalidArgumentException("Invalid array key at index {$idx} in call to " .  __METHOD__ . '()');
+                throw new \InvalidArgumentException("Invalid array key at index {$idx} in call to " .  __METHOD__ . "().  Path up to here was: {$path}");
             }
+
+            $path .= "//{$k}";
 
             // if key doesn't exist, return $default
             if (! array_key_exists($k, $sub)){
