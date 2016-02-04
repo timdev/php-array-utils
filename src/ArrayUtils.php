@@ -9,7 +9,7 @@ class ArrayUtils
     /**
      * Digs a value out of a (possibly nested) array using an array of keys, or return a default value.
      *
-     * This method's purpose is to avoid a bunch of calls to isset($array['some']['nested']['value'] in userland code.
+     * This method's purpose is to avoid a bunch of calls to isset($array['some']['nested']['value']) in userland code.
      *
      * val($array, ['a','b']) => $array['a']['b'] (or null)
      * val($array, ['a',6], false) => $array['a'][6] (or false)
